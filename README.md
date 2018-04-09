@@ -16,9 +16,9 @@ ___
 En un futuro no muy lejano...
 ___
 ### Documentación
-[Backend](docs/backend.md)
-[Database](docs/database.md)
-[Frontend](docs/frontend.md)
-[Infraestructura](docs/infraestructura.md)
-[Javascript](docs/javascript.md)
-[Proyecto](docs/proyecto.md)
+- [Backend](docs/backend.md)
+- [Database](docs/database.md)
+- [Frontend](docs/frontend.md)
+- [Infraestructura](docs/infraestructura.md)
+- [Javascript](docs/javascript.md)
+- [Proyecto](docs/proyecto.md)
