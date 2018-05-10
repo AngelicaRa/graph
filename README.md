@@ -1,6 +1,6 @@
-# Ezgraphs
+# easygraph
  
-Con Ezgraphs creas tus propias gráficas de forma **fácil** y **sencilla**. Sube tu fichero, o copia y pega los datos y automáticamente tendrás varios tipos de gráficas entre los que elegir.
+Con easygraph creas tus propias gráficas de forma **fácil** y **sencilla**. Sube tu fichero, o copia y pega los datos y automáticamente tendrás varios tipos de gráficas entre los que elegir.
 ___
 ### Miembros
 - [Angélica](https://github.com/alu0100505092)
