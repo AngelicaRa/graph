@@ -21,7 +21,9 @@
   "homepage": "https://github.com/lunkito/easygraph#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "mongodb": "^3.1.0-beta4",
+    "mongodb": "^3.1.0-beta4"
+  },
+  "devDependencies": {
     "tslint": "^5.10.0",
     "typescript": "^2.9.1"
   }
