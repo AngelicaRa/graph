@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import * as React from 'react';
 import { scaleBand, scaleLinear } from 'd3-scale';
 
 import data from '../data.js';
@@ -14,7 +14,7 @@ import data from '../data.js';
 //   yScale: any;
 // }
 
-export default class Chart extends Component {
+export default class Chart extends React.Component {
   constructor() {
     super();
     this.xScale = scaleBand();

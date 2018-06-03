@@ -1,0 +1,15 @@
+.mainMenuList {
+  list-style: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0;
+}
+.mainMenuListItem {
+  padding: 10px;
+  cursor: pointer;
+}
+.mainMenuListItem:hover {
+  background: var(--main-color);
+  color: white;
+}
