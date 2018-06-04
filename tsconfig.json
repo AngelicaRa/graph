@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
+    "experimentalDecorators": true,
+    "sourceMap": false,
     "module": "commonjs",
     "jsx": "react",
     "typeRoots": [

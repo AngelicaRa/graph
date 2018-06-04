@@ -12,9 +12,9 @@ export default class MainMenu extends React.Component<MainMenuProps, MainMenuSta
     return <div>
         <ul className={styles.mainMenuList}>
           <li><FontAwesomeIcon icon={fa.faChartBar} className={styles.mainMenuListItem} color='red' size='3x' /></li>
-          <li><FontAwesomeIcon icon={fa.faChartArea} size='3x' /></li>
-          <li><FontAwesomeIcon icon={fa.faChartLine} size='3x' /></li>
-          <li><FontAwesomeIcon icon={fa.faChartPie} size='3x' /></li>
+          <li><FontAwesomeIcon icon={fa.faChartArea} className={styles.mainMenuListItem} color='red' size='3x' /></li>
+          <li><FontAwesomeIcon icon={fa.faChartLine} className={styles.mainMenuListItem} color='red' size='3x' /></li>
+          <li><FontAwesomeIcon icon={fa.faChartPie} className={styles.mainMenuListItem} color='red' size='3x' /></li>
         </ul>
       </div>;
   }
