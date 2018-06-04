@@ -9,7 +9,7 @@
   padding: 10px;
   cursor: pointer;
 }
-.mainMenuListItem:hover {
+/* .mainMenuListItem:hover {
   background: var(--main-color);
-  color: white;
-}
+  color: var(--main-font-color);
+} */

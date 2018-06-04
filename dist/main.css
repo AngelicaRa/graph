@@ -1,0 +1,22 @@
+/* :root {
+  --main-color: rgb(145, 145, 145);
+  --secondary-color: rgb(29, 109, 92);
+  --main-font-color: rgb(255, 255, 255);
+  --secondary-font-color: red;
+}
+
+body {
+  background: rgb(255, 255, 255);
+}*/
+
+#app {
+  width: fit-content;
+  margin: auto;
+  /* background: var(--main-color);
+  color: var(--main-font-color); */
+}
+
+/* a { color: var(--main-font-color); }
+a:visited { color: var(--secondary-font-color); }
+a:hover { color: var(--secondary-color); }
+a:active { color: blue } */
