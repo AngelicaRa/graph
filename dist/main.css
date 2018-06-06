@@ -3,11 +3,11 @@
   --secondary-color: rgb(29, 109, 92);
   --main-font-color: rgb(255, 255, 255);
   --secondary-font-color: red;
-}
+}*/
 
 body {
-  background: rgb(255, 255, 255);
-}*/
+  background: rgb(207, 205, 205);
+}
 
 #app {
   width: fit-content;
