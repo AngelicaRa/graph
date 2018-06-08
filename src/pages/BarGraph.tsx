@@ -1,22 +1,56 @@
 import * as React from 'react';
 import { Paper, Typography } from '@material-ui/core';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { inject, observer } from 'mobx-react';
+import { GraphStore } from '../stores/graphStore';
 
-const data = [
-  {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
-  {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
-  {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
-  {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
-  {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
-  {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
-  {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
-];
+// const data = [
+//   {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
+//   {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
+//   {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
+//   {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
+//   {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
+//   {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
+//   {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
+// ];
 
-export class BarGraph extends React.Component {
+interface BarGraphProps {
+  graphStore?: GraphStore;
+}
+
+interface BarGraphStates {
+  data: object[];
+}
+
+@inject('graphStore')
+@observer
+export class BarGraph extends React.Component<BarGraphProps , BarGraphStates> {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: []
+    };
+  }
+
+  // loadGraph() {
+    // fetch('http://localhost:3000/graphs/')
+    //   .then(response => response.json())
+    //   .then(jsonResponse => {
+    //     this.setState({data: jsonResponse[0].data});
+    // });
+  // }
+
+  componentDidMount() {
+    this.props.graphStore.getGraphs();
+  }
+
   render() {
+    console.log('Render: ', this.props.graphStore.graphs);
+
     return <Paper>
-      <Typography variant='title'>BARGRAPH PAGE</Typography>
-      <BarChart width={600} height={300} data={data} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+      <Typography variant='headline' component='h1' align='center'>BARGRAPH PAGE</Typography>
+      <BarChart width={600} height={300} data={this.props.graphStore.graphs} margin={{top: 5, right: 30, left: 20, bottom: 5}}>
       <CartesianGrid strokeDasharray='3 3'/>
       <XAxis dataKey='name'/>
       <YAxis/>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { PieChart, Pie, Sector, Cell } from 'recharts';
+import { Typography } from '@material-ui/core';
 
 const data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
 {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
@@ -21,7 +22,8 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
 export class PieChartSimple extends React.Component {
   render () {
-    return (
+    return <React.Fragment>
+      <Typography variant='headline' component='h1' align='center'>Pie Chart Component</Typography>
       <PieChart width={800} height={400} >
       <Pie
       dataKey = 'value'
@@ -38,6 +40,6 @@ export class PieChartSimple extends React.Component {
       }
       </Pie>
       </PieChart>
-    );
+    </React.Fragment>;
   }
 }

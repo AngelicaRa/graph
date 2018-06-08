@@ -4,7 +4,7 @@ import { Paper, Typography } from '@material-ui/core';
 export class About extends React.Component {
   render() {
     return <Paper>
-      <Typography variant='title'>ABOUT COMPONENT</Typography>
+      <Typography variant='headline' component='h1' align='center'>ABOUT COMPONENT</Typography>
     </Paper>;
   }
 }
