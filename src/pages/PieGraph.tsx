@@ -23,7 +23,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
 export class PieGraph extends React.Component {
   render() {
-    return <Paper>
+    return <React.Fragment>
       <Typography variant='headline' component='h1' align='center'>PIE-GRAPH PAGE</Typography>
       <PieChart width={180} height={180} >
       <Pie
@@ -41,6 +41,6 @@ export class PieGraph extends React.Component {
       }
       </Pie>
       </PieChart>
-    </Paper>;
+    </React.Fragment>;
   }
 }

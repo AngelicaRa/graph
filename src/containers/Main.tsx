@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Paper, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { inject, observer } from 'mobx-react';
 import { GraphStore } from '../stores/GraphStore';
 
@@ -25,10 +25,10 @@ export default class Main extends React.Component<MainProps, {}> {
   }
 
   render() {
-    return <Paper>
+    return <React.Fragment>
       <Typography variant='headline' component='h1' align='center'>MAIN COMPONENT</Typography>
       {/* <div>{this.props.graphStore.graphs}</div> */}
       {/* {console.log('Render, ', this.props.graphStore.graphs)} */}
-    </Paper>;
+    </React.Fragment>;
   }
 }

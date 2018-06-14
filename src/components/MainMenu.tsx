@@ -1,69 +1,84 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import * as fa from '@fortawesome/fontawesome-free-solid';
-import { List, ListItem, ListItemText, Paper, ListItemIcon } from '@material-ui/core';
-import { BubbleChart, InsertChart, GraphicEq, MultilineChart, PieChart, ShowChart } from '@material-ui/icons';
+import { List, ListItem, ListItemText, ListItemIcon, Typography } from '@material-ui/core';
+import { InsertChart, MultilineChart, PieChart, ShowChart } from '@material-ui/icons';
 
 
-interface MainMenuProps {}
+export interface MainMenuProps {
+  externalStyles?: React.CSSProperties;
+}
 interface MainMenuStats {}
 
-const styles: React.CSSProperties = {
-  fontSize: '40px',
-  color: 'red'
+const styles = {
+  menu: {
+    background: '#53B97C'
+  },
+  button: {
+    marginRight: '0',
+    width: 'fit-content'
+  },
+  icon: {
+    color: 'white',
+    margin: '10px 0 0 25px',
+    fontSize: '50px',
+  },
+  logo: {
+    padding: '0'
+  },
+  link: {
+    textDecoration: 'none',
+  },
+  text: {
+    fontSize: '26px',
+    color: 'white',
+    marginLeft: '10px'
+  }
 };
 
-export default class MainMenu extends React.Component<MainMenuProps, MainMenuStats> {
 
+export default class MainMenu extends React.Component<MainMenuProps, MainMenuStats> {
   render() {
-    return <Paper>
-      <List component='nav'>
-        {/* <Link to='/'><ListItem button>LOGO</ListItem></Link>
-        <Link to='bargraph'><ListItem button><FontAwesomeIcon icon={fa.faChartBar} size='3x' /></ListItem></Link>
-        <Link to='areagraph'><ListItem button><FontAwesomeIcon icon={fa.faChartArea} size='3x' /></ListItem></Link>
-        <Link to='linegraph'><ListItem button><FontAwesomeIcon icon={fa.faChartLine} size='3x' /></ListItem></Link>
-        <Link to='piegraph'><ListItem button><FontAwesomeIcon icon={fa.faChartPie} size='3x' /></ListItem></Link>
-        <Link to='about'><ListItem button><ListItemText primary='ABOUT'/></ListItem></Link> */}
+    return <div style={ this.props.externalStyles }>
+      <List component='nav' style={styles.menu}>
         <Link to='/'>
-          <ListItem button>
-            LOGO
+          <ListItem button >
+            <img style={styles.logo} src='../../assets/Easygraph.png' alt='logo' width='104px' height='62px'/>
           </ListItem>
         </Link>
         <Link to='bargraph'>
-          <ListItem button>
+          <ListItem button >
             <ListItemIcon >
-              <PieChart color='action' style={styles}/>
+              <PieChart color='action' style={styles.icon}/>
             </ListItemIcon>
           </ListItem>
         </Link>
         <Link to='areagraph'>
-          <ListItem button>
+          <ListItem button  >
             <ListItemIcon >
-              <InsertChart color='primary' style={styles}/>
+              <InsertChart color='primary' style={styles.icon}/>
             </ListItemIcon>
           </ListItem>
         </Link>
         <Link to='linegraph'>
-          <ListItem button>
+          <ListItem button  >
             <ListItemIcon >
-              <ShowChart color='error' style={styles}/>
+              <ShowChart color='error' style={styles.icon}/>
             </ListItemIcon>
           </ListItem>
         </Link>
         <Link to='piegraph'>
-          <ListItem button>
+          <ListItem button  >
             <ListItemIcon >
-              <MultilineChart color='secondary' style={styles}/>
+              <MultilineChart color='secondary' style={styles.icon}/>
             </ListItemIcon>
           </ListItem>
         </Link>
-        <Link to='about'>
-          <ListItem button>
-            <ListItemText primary='ABOUT'/>
+        <Link to='about' style={styles.link}>
+          <ListItem button >
+            <Typography style={styles.text}>ABOUT</Typography>
           </ListItem>
         </Link>
       </List>
-  </Paper>;
+  </div>;
   }
 }
