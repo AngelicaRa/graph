@@ -1,18 +1,48 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { GraphStore } from '../stores/GraphStore';
+import { ChartType } from '../../types/types';
+import { BarGraph, PieGraph, LineGraph, AreaGraph } from '../pages';
 
 export interface GraphProps {
-  graphStore: GraphStore;
+  graphStore?: GraphStore;
+  type: ChartType;
 }
 
 @inject('graphStore')
 @observer
-export default class Graph extends React.Component<GraphStore, {}> {
+export class Graph extends React.Component<GraphProps, {}> {
 
   componentDidMount() {
-    if (!this.props.graphs) {
-      this.props.getGraph();
+    if (!this.props.graphStore.graphs) {
+      this.props.graphStore.getGraph();
     }
+  }
+
+  renderHistogram() { return <BarGraph />; }
+  renderPiechart() { return <PieGraph />; }
+  renderMultilineChart() { return <AreaGraph />; }
+  renderLineChart() { return <LineGraph />; }
+
+  renderChart(type) {
+    switch (type) {
+      case ChartType.HISTOGRAM:
+        return this.renderHistogram();
+
+      case ChartType.PIE_CHART:
+        return this.renderPiechart();
+
+      case ChartType.MULTILINE_CHART:
+        return this.renderMultilineChart();
+
+      case ChartType.LINE_CHART:
+        return this.renderLineChart();
+    }
+  }
+
+  render() {
+    return <React.Fragment>
+      {this.renderChart(this.props.type)}
+    </React.Fragment>;
   }
 }
