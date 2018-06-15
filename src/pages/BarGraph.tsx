@@ -1,30 +1,29 @@
 import * as React from 'react';
-import { Paper, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { inject, observer } from 'mobx-react';
 import { GraphStore } from '../stores/graphStore';
+import Graph from '../components/Graph';
 
 interface BarGraphProps {
   graphStore?: GraphStore;
 }
 
 interface BarGraphStates {
-  data: object[];
+  data?: object[];
 }
 
 @inject('graphStore')
 @observer
-export class BarGraph extends React.Component<BarGraphProps , BarGraphStates> {
+export class BarGraph extends React.Component<BarGraphProps, BarGraphStates> {
   constructor(props) {
     super(props);
-
-    this.state = {
-      data: []
-    };
   }
 
   componentDidMount() {
-    this.props.graphStore.getGraph();
+    if (!this.props.graphStore.graphs) {
+      this.props.graphStore.getGraph();
+    }
   }
 
   render() {

@@ -19,8 +19,7 @@ const styles = {
   },
   icon: {
     color: 'white',
-    margin: '10px 0 0 25px',
-    fontSize: '50px',
+    fontSize: '40px',
   },
   logo: {
     padding: '0'
@@ -29,9 +28,7 @@ const styles = {
     textDecoration: 'none',
   },
   text: {
-    fontSize: '26px',
     color: 'white',
-    marginLeft: '10px'
   }
 };
 
@@ -40,43 +37,45 @@ export default class MainMenu extends React.Component<MainMenuProps, MainMenuSta
   render() {
     return <div style={ this.props.externalStyles }>
       <List component='nav' style={styles.menu}>
-        <Link to='/'>
+        <Link to='/' style={styles.link}>
           <ListItem button >
             <img style={styles.logo} src='../../assets/Easygraph.png' alt='logo' width='104px' height='62px'/>
           </ListItem>
         </Link>
-        <Link to='bargraph'>
+        <Link to='bargraph' style={styles.link}>
           <ListItem button >
-            <ListItemIcon >
-              <PieChart color='action' style={styles.icon}/>
-            </ListItemIcon>
+            <ListItemIcon><InsertChart style={styles.icon}/></ListItemIcon>
+            <ListItemText disableTypography primary={
+              <Typography style={styles.text}>Histogram</Typography>
+            }></ListItemText>
           </ListItem>
         </Link>
-        <Link to='areagraph'>
-          <ListItem button  >
-            <ListItemIcon >
-              <InsertChart color='primary' style={styles.icon}/>
-            </ListItemIcon>
+        <Link to='areagraph' style={styles.link}>
+          <ListItem button >
+            <ListItemIcon><PieChart style={styles.icon}/></ListItemIcon>
+            <ListItemText disableTypography primary={
+              <Typography style={styles.text}>Pie Chart</Typography>
+            }></ListItemText>
           </ListItem>
         </Link>
-        <Link to='linegraph'>
+        <Link to='linegraph' style={styles.link}>
           <ListItem button  >
-            <ListItemIcon >
-              <ShowChart color='error' style={styles.icon}/>
-            </ListItemIcon>
+            <ListItemIcon><ShowChart style={styles.icon}/></ListItemIcon>
+            <ListItemText disableTypography primary={
+              <Typography style={styles.text}>Line Graph</Typography>
+            }></ListItemText>
           </ListItem>
         </Link>
-        <Link to='piegraph'>
+        <Link to='piegraph' style={styles.link}>
           <ListItem button  >
-            <ListItemIcon >
-              <MultilineChart color='secondary' style={styles.icon}/>
-            </ListItemIcon>
+            <ListItemIcon><MultilineChart style={styles.icon}/></ListItemIcon>
+            <ListItemText disableTypography primary={
+              <Typography style={styles.text}>Others</Typography>
+            }></ListItemText>
           </ListItem>
         </Link>
         <Link to='about' style={styles.link}>
-          <ListItem button >
-            <Typography style={styles.text}>ABOUT</Typography>
-          </ListItem>
+          <ListItem button><Typography style={styles.text}>ABOUT</Typography></ListItem>
         </Link>
       </List>
   </div>;
