@@ -1,61 +1,87 @@
 import * as React from 'react';
-import * as sa from 'superagent';
+import { TextField, Button } from '@material-ui/core';
+import * as externalCss from './FakeLogin.css';
+import { LoginStore } from '../stores/LoginStore';
+import { inject, observer } from 'mobx-react';
+
+const style: any = {
+  input: {
+    marginLeft: '20px',
+    marginRight: '20px',
+    display: 'block',
+  },
+  button: {
+    marginLeft: '20px',
+    marginRight: '20px',
+    display: 'block',
+    background: '#63c98C'
+  },
+  form: {
+    display: 'flex',
+    placeItems: 'center',
+    width: '100%',
+    height: '100%'
+  }
+};
+
+export interface FakeLoginProps {
+  loginStore: LoginStore;
+}
 
 export interface FakeLoginState {
   userName: string;
   password: string;
 }
 
-export class FakeLogin extends React.Component<{}, FakeLoginState> {
+@inject('loginStore')
+@observer
+export class FakeLogin extends React.Component<FakeLoginProps, FakeLoginState> {
   constructor(props) {
     super(props);
     this.state = { userName: '', password: '' };
 
-    this.handleChangeUsername = this.handleChangeUsername.bind(this);
-    this.handleChangeUserpassword = this.handleChangeUserpassword.bind(this);
+    this.handleUsername = this.handleUsername.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeUsername(event) {
+  handleUsername(event) {
     this.setState({userName: event.target.value});
   }
-  handleChangeUserpassword(event) {
+  handlePassword(event) {
     this.setState({password: event.target.value});
   }
 
   handleSubmit(event) {
     event.preventDefault();
-
-    sa.post('http://localhost:3000/users/login')
-    .send({
-      userName: this.state.userName,
-      password: this.state.password })
-    .end((err, res) => {
-      if (!err) {
-        console.log('Peticion ok. Respuesta: ', res);
-      }
-      console.log('Error ', err);
-    });
-
-    // fetch('http://localhost:3000/users/login', {
-    //   method: 'POST',
-    //   body: JSON.stringify(this.state)
-    // });
+    alert(`UserName:  ${this.state.userName}\n Password: ${this.state.password}`);
+    this.props.loginStore.login(this.state.userName, this.state.password);
   }
 
   render() {
-    return <React.Fragment>
-      <form method='POST' onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type='text' name='userName' value={this.state.userName} onChange={this.handleChangeUsername} />
-        </label><br/>
-        <label>
-          Password:
-          <input type='Password' name='password' value={this.state.password} onChange={this.handleChangeUserpassword} />
-        </label>
-        <input type='submit' value='Submit' />
+    return <div className={externalCss.form}>
+      <form method='POST' autoComplete='off' >
+        <TextField
+          onChange={this.handleUsername}
+          id='username'
+          placeholder='User Name'
+          margin='normal'
+          style={style.input}
+        />
+        <TextField
+          onChange={this.handlePassword}
+          id='password'
+          placeholder='Password'
+          margin='normal'
+          style={style.input}
+          type='password'
+        />
+        <Button
+          variant='raised'
+          style={style.button}
+          onClick={this.handleSubmit}
+        >Login</Button>
       </form>
-    </React.Fragment>;
+    </div>;
   }
 }
