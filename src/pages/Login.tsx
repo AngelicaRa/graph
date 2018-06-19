@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField, Button } from '@material-ui/core';
-import * as externalCss from './FakeLogin.css';
+import * as externalCss from './Login.css';
 import { LoginStore } from '../stores/LoginStore';
 import { inject, observer } from 'mobx-react';
 
@@ -24,18 +24,18 @@ const style: any = {
   }
 };
 
-export interface FakeLoginProps {
+export interface LoginProps {
   loginStore?: LoginStore;
 }
 
-export interface FakeLoginState {
+export interface LoginState {
   userName: string;
   password: string;
 }
 
 @inject('loginStore')
 @observer
-export class FakeLogin extends React.Component<FakeLoginProps, FakeLoginState> {
+export class Login extends React.Component<LoginProps, LoginState> {
   constructor(props) {
     super(props);
     this.state = { userName: '', password: '' };

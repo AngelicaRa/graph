@@ -30,6 +30,6 @@ export const info = [
   {
     name: 'Fake Login',
     icon: IconType.PERSON,
-    route: 'fakeLogin'
+    route: 'Login'
   }
 ];

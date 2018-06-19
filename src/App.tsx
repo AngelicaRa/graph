@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Paper } from '@material-ui/core';
 import Main from './containers/Main';
-import { About, FakeLogin } from './pages/';
+import { About, Login } from './pages/';
 import MainMenu from './components/MainMenu';
 import { Provider, inject, observer } from 'mobx-react';
 import stores from './stores';
@@ -40,7 +40,7 @@ export default class App extends React.Component<AppProps, {}> {
         <Route path='/linegraph' render={() => <Graph type={ChartType.LINE_CHART}/>} />
         <Route path='/piegraph' render={() => <Graph type={ChartType.PIE_CHART}/>} />
         <Route path='/areagraph' render={() => <Graph type={ChartType.MULTILINE_CHART}/>} />
-        <Route path='/fakeLogin' render={() => this.props.loginStore.loginVisible && <FakeLogin />}/>
+        <Route path='/Login' component={Login}/>
         {/* this.props.loginStore.visible &&  */}
       </Paper>
     </React.Fragment>
