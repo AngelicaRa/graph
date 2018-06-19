@@ -4,11 +4,15 @@ import { Paper } from '@material-ui/core';
 import Main from './containers/Main';
 import { About, FakeLogin } from './pages/';
 import MainMenu from './components/MainMenu';
-import { Provider } from 'mobx-react';
+import { Provider, inject, observer } from 'mobx-react';
 import stores from './stores';
 import { Graph } from './components/Graph';
 import { ChartType } from '../types/types';
+import { LoginStore } from './stores/LoginStore';
 
+export interface AppProps {
+  loginStore?: LoginStore;
+}
 
 const styles = {
   app: {
@@ -21,7 +25,9 @@ const styles = {
   }
 };
 
-export default class App extends React.Component {
+@inject('loginStore')
+@observer
+export default class App extends React.Component<AppProps, {}> {
   render() {
     return <Provider {...stores}>
     <Router>
@@ -34,7 +40,8 @@ export default class App extends React.Component {
         <Route path='/linegraph' render={() => <Graph type={ChartType.LINE_CHART}/>} />
         <Route path='/piegraph' render={() => <Graph type={ChartType.PIE_CHART}/>} />
         <Route path='/areagraph' render={() => <Graph type={ChartType.MULTILINE_CHART}/>} />
-        <Route path='/fakeLogin' component={FakeLogin} />
+        <Route path='/fakeLogin' render={() => this.props.loginStore.loginVisible && <FakeLogin />}/>
+        {/* this.props.loginStore.visible &&  */}
       </Paper>
     </React.Fragment>
     </Router>

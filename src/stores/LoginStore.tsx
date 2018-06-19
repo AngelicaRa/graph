@@ -4,6 +4,12 @@ import * as sa from 'superagent';
 
 export class LoginStore {
   @observable token: string;
+  @observable loginVisible = true;
+
+  @action toggleVisible() {
+    this.loginVisible = !this.loginVisible;
+    console.log(this.loginVisible);
+  }
 
   @action login(userName, password) {
     const hash = crypto.createHmac('sha256', 'secret')

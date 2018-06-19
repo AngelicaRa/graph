@@ -25,7 +25,7 @@ const style: any = {
 };
 
 export interface FakeLoginProps {
-  loginStore: LoginStore;
+  loginStore?: LoginStore;
 }
 
 export interface FakeLoginState {
@@ -54,7 +54,10 @@ export class FakeLogin extends React.Component<FakeLoginProps, FakeLoginState> {
 
   handleSubmit(event) {
     event.preventDefault();
-    alert(`UserName:  ${this.state.userName}\n Password: ${this.state.password}`);
+
+    console.log('Visible: ', this.props.loginStore.loginVisible);
+    this.props.loginStore.toggleVisible();
+    console.log('Visible: ', this.props.loginStore.loginVisible);
     this.props.loginStore.login(this.state.userName, this.state.password);
   }
 
