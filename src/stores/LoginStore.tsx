@@ -16,8 +16,9 @@ export class LoginStore {
       .end((err, res) => {
         if (!err) {
           console.log('Peticion ok. Respuesta: ', res);
-          console.log(`Token: ${res.body}. \n Tipo: ${typeof(res.body)}`);
+          console.log(`Token: ${res.body.token}. \n Tipo: ${typeof(res.body.token)}`);
           this.token = res.body;
+          sessionStorage.setItem('token', res.body.token);
         }
         else {
           console.log('Error ', err);
