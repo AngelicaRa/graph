@@ -5,6 +5,8 @@ import * as sa from 'superagent';
 export class LoginStore {
   @observable token: string;
   @observable loginVisible = true;
+  @observable isLogged = false;
+  @observable user;
 
   @action toggleVisible() {
     this.loginVisible = !this.loginVisible;
@@ -23,7 +25,9 @@ export class LoginStore {
         if (!err) {
           console.log('Peticion ok. Respuesta: ', res);
           console.log(`Token: ${res.body.token}. \n Tipo: ${typeof(res.body.token)}`);
-          this.token = res.body;
+          this.isLogged = true;
+          this.token = res.body.token;
+          this.user = res.body;
           sessionStorage.setItem('token', res.body.token);
         }
         else {

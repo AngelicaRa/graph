@@ -28,7 +28,7 @@ export const info = [
     route: 'piegraph'
   },
   {
-    name: 'Fake Login',
+    name: 'Login',
     icon: IconType.PERSON,
     route: 'Login'
   }

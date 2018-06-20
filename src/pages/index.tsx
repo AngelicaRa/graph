@@ -4,3 +4,4 @@ export * from './About';
 export * from './BarGraph';
 export * from './AreaGraph';
 export * from './Login';
+export * from './Home';

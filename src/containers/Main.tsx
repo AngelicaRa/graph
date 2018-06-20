@@ -16,7 +16,7 @@ export default class Main extends React.Component<MainProps, {}> {
     super(props);
   }
   componentDidMount() {
-      this.props.graphStore.getGraphs();
+      this.props.graphStore.getAllGraphs();
       console.log('ComponentDidMount ', this.props.graphStore.graphs);
   }
   componentDidUpdate() {
@@ -27,8 +27,6 @@ export default class Main extends React.Component<MainProps, {}> {
   render() {
     return <React.Fragment>
       <Typography variant='headline' component='h1' align='center'>MAIN COMPONENT</Typography>
-      {/* <div>{this.props.graphStore.graphs}</div> */}
-      {/* {console.log('Render, ', this.props.graphStore.graphs)} */}
     </React.Fragment>;
   }
 }

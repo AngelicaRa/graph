@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { GraphStore } from '../stores/GraphStore';
 import { ChartType } from '../../types/types';
 import { BarGraph, PieGraph, LineGraph, AreaGraph } from '../pages';
+import { Grid } from '@material-ui/core';
 
 export interface GraphProps {
   graphStore?: GraphStore;
@@ -15,7 +16,7 @@ export class Graph extends React.Component<GraphProps, {}> {
 
   componentDidMount() {
     if (!this.props.graphStore.graphs) {
-      this.props.graphStore.getGraph();
+      this.props.graphStore.getFirstGraph();
     }
   }
 
@@ -41,8 +42,8 @@ export class Graph extends React.Component<GraphProps, {}> {
   }
 
   render() {
-    return <React.Fragment>
+    return <Grid container style={{ width: '100%' }}>
       {this.renderChart(this.props.type)}
-    </React.Fragment>;
+    </Grid >;
   }
 }
