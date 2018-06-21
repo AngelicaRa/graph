@@ -31,14 +31,27 @@ export class LoginStore {
           this.token = res.body.token;
           this.user = res.body;
           sessionStorage.setItem('token', res.body.token);
-          console.log('user: ', this.user);
-          console.log('Response: ', res);
-          console.log('body ', res.body);
-          console.log('Token ', res.body.token);
         }
         else {
           console.log('Error ', err);
         }
     });
+  }
+
+  @action logout(token) {
+    console.log('token', token.toJS);
+    sa.post('http://localhost:3000/users/logout')
+      .send({ token })
+      .end((err, res) => {
+        if (!err) {
+          console.log(res);
+          this.isLogged = false;
+          this.token = '';
+          this.user = {};
+          sessionStorage.setItem('token', '');
+        } else {
+          console.log('Error en SA de logout', err);
+        }
+      });
   }
 }
