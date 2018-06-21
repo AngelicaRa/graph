@@ -24,7 +24,7 @@ export class LoginStore {
         .digest('hex');
       console.log(`Password: ${hash}`);
 
-      sa.post('http://localhost:3000/users/login')
+      sa.post('https://api.easygraph.me/users/login')
         .send({userName, password: hash})
         .end((err, res) => {
           if (!err) {
@@ -45,7 +45,7 @@ export class LoginStore {
   @action logout(token) {
     console.log('token', token.toJS);
     return new Promise((resolve, reject) => {
-      sa.post('http://localhost:3000/users/logout')
+      sa.post('https://api.easygraph.me/users/logout')
       .send({ token })
       .end((err, res) => {
         if (!err) {
