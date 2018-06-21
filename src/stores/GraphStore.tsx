@@ -11,7 +11,7 @@ export class GraphStore {
   }
 
   @action getFirstGraph() {
-    fetch('http://localhost:3000/graphs')
+    fetch('http://localhost:3000/graphs/' + sessionStorage.getItem('token'))
       .then(response => response.json())
       .then(jsonResponse => this.graphs = jsonResponse[0].data);
   }

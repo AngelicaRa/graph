@@ -19,18 +19,14 @@ export default class GraphList extends React.Component<GraphListProps> {
     }
   }
 
-  renderGraphs() {
-    return this.props.graphStore.graphs.map(item => <li>{item.name}</li>);
-  }
-
   render() {
-    return <Grid sm={12}>
-      <Typography variant='headline' component='h1' >Bienvenido {this.props.loginStore.user.userName}</Typography>
+    return <Grid item sm={12}>
+      <Typography variant='headline' component='h1' >Bienvenido {this.props.loginStore.user.userName ? this.props.loginStore.user.userName : ''}</Typography>
       <Typography variant='subheading' component='h3'>lista de graficas</Typography>
       <List component='nav'>
         {this.props.graphStore.graphs && this.props.graphStore.graphs.map(graph =>
-          <ListItem button key={graph.nombre}>
-            <ListItemText>{graph.nombre}</ListItemText>
+          <ListItem button key={graph.name}>
+            <ListItemText>{graph.name}</ListItemText>
           </ListItem>)}
       </List>
     </Grid>;

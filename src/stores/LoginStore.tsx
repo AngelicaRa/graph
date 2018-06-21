@@ -1,16 +1,20 @@
-import { action, observable } from 'mobx';
+import { action, observable, toJS } from 'mobx';
 import * as crypto from 'crypto';
 import * as sa from 'superagent';
+
+interface User {
+  userName?: string;
+  token?: string;
+}
 
 export class LoginStore {
   @observable token: string;
   @observable loginVisible = true;
   @observable isLogged = false;
-  @observable user;
+  @observable user?: User;
 
   @action toggleVisible() {
     this.loginVisible = !this.loginVisible;
-    console.log(this.loginVisible);
   }
 
   @action login(userName, password) {
@@ -23,12 +27,14 @@ export class LoginStore {
       .send({userName, password: hash})
       .end((err, res) => {
         if (!err) {
-          console.log('Peticion ok. Respuesta: ', res);
-          console.log(`Token: ${res.body.token}. \n Tipo: ${typeof(res.body.token)}`);
           this.isLogged = true;
           this.token = res.body.token;
           this.user = res.body;
           sessionStorage.setItem('token', res.body.token);
+          console.log('user: ', this.user);
+          console.log('Response: ', res);
+          console.log('body ', res.body);
+          console.log('Token ', res.body.token);
         }
         else {
           console.log('Error ', err);
