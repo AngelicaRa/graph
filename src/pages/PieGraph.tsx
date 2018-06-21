@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, Grid } from '@material-ui/core';
 import { PieChart, Pie, Sector, Cell } from 'recharts';
+import { GraphStore } from '../stores/graphStore';
+import { inject, observer } from 'mobx-react';
+
+interface Props {
+  graphStore?: GraphStore;
+}
 
 const data = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
 {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
@@ -21,19 +27,21 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-export class PieGraph extends React.Component {
+@inject('graphStore')
+@observer
+export class PieGraph extends React.Component<Props> {
   render() {
-    return <React.Fragment>
+    return <Grid item sm={12}>
       <Typography variant='headline' component='h1' align='center'>PIE-GRAPH PAGE</Typography>
-      <PieChart width={180} height={180} >
+      <PieChart width={250} height={250} style={{ margin: '50px auto 0' }}>
       <Pie
       dataKey = 'value'
-      data={data}
-      cx={80}
-      cy={80}
+      data={this.props.graphStore.graphs[1].data}
+      cx={110}
+      cy={110}
       labelLine={false}
       label={renderCustomizedLabel}
-      outerRadius={80}
+      outerRadius={110}
       fill='#8884d8'
       >
       {
@@ -41,6 +49,6 @@ export class PieGraph extends React.Component {
       }
       </Pie>
       </PieChart>
-    </React.Fragment>;
+    </Grid >;
   }
 }

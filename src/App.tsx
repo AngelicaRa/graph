@@ -37,8 +37,8 @@ export default class App extends React.Component<AppProps, {}> {
         <Route path='/about' component={About} />
         <Route path='/bargraph' render={() => <Graph type={ChartType.HISTOGRAM}/>}  />
         <Route path='/linegraph' render={() => <Graph type={ChartType.LINE_CHART}/>} />
-        <Route path='/piegraph' render={() => <Graph type={ChartType.PIE_CHART}/>} />
-        <Route path='/areagraph' render={() => <Graph type={ChartType.MULTILINE_CHART}/>} />
+        <Route path='/piegraph' render={() => <Graph type={ChartType.MULTILINE_CHART}/>} />
+        <Route path='/areagraph' render={() => <Graph type={ChartType.PIE_CHART}/>} />
         <Route path='/login' component={Login}/>
       </Paper>
     </React.Fragment>

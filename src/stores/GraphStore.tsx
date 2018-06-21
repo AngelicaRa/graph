@@ -5,13 +5,24 @@ export class GraphStore {
   @observable graphs;
 
   @action getAllGraphs() {
-    fetch('http://localhost:3000/graphs/' + sessionStorage.getItem('token'))
+    // return new Promise((resolve, reject) => {
+    //   fetch('http://localhost:3000/graphs/' + sessionStorage.getItem('token'))
+    //     .then(response => response.json())
+    //     .then(jsonResponse => {
+    //       this.graphs = jsonResponse;
+    //       resolve(jsonResponse);
+    //     });
+    // });
+    fetch('http://localhost:3000/graphs/' + localStorage.getItem('token'))
       .then(response => response.json())
-      .then(jsonResponse => this.graphs = jsonResponse);
+      .then(jsonResponse => {
+        this.graphs = jsonResponse;
+        console.log('Graphs en store actualizadas');
+    });
   }
 
   @action getFirstGraph() {
-    fetch('http://localhost:3000/graphs/' + sessionStorage.getItem('token'))
+    fetch('http://localhost:3000/graphs/' + localStorage.getItem('token'))
       .then(response => response.json())
       .then(jsonResponse => this.graphs = jsonResponse[0].data);
   }

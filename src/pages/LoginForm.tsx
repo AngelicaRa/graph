@@ -3,6 +3,7 @@ import { TextField, Button } from '@material-ui/core';
 import * as externalCss from './Login.css';
 import { LoginStore } from '../stores/LoginStore';
 import { inject, observer } from 'mobx-react';
+import { GraphStore } from '../stores/graphStore';
 
 const style = {
   input: {
@@ -27,6 +28,7 @@ const style = {
 
 export interface LoginFormProps {
   loginStore?: LoginStore;
+  graphStore?: GraphStore;
 }
 
 export interface LoginFormState {
@@ -34,7 +36,7 @@ export interface LoginFormState {
   password: string;
 }
 
-@inject('loginStore')
+@inject('loginStore', 'graphStore')
 @observer
 export class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
   constructor(props) {
@@ -56,10 +58,12 @@ export class LoginForm extends React.Component<LoginFormProps, LoginFormState> {
   handleSubmit(event) {
     event.preventDefault();
 
-    console.log('Visible: ', this.props.loginStore.loginVisible);
     this.props.loginStore.toggleVisible();
-    console.log('Visible: ', this.props.loginStore.loginVisible);
-    this.props.loginStore.login(this.state.userName, this.state.password);
+    this.props.loginStore.login(this.state.userName, this.state.password)
+      .then(() => {
+        this.props.graphStore.getAllGraphs();
+        console.log('Fin del login');
+      });
   }
 
   render() {

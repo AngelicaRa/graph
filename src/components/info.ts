@@ -23,7 +23,7 @@ export const info = [
     route: 'linegraph'
   },
   {
-    name: 'Others',
+    name: 'Area Graph',
     icon: IconType.MULTILINE_CHART,
     route: 'piegraph'
   },
