@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { List, ListItem, ListItemText, ListItemIcon, Typography } from '@material-ui/core';
 import { InsertChart, MultilineChart, PieChart, ShowChart, Person } from '@material-ui/icons';
 import { info, IconType } from './info';
+import { Logo } from './Logo';
 
 
 export interface MainMenuProps {
@@ -54,8 +55,9 @@ export default class MainMenu extends React.Component<MainMenuProps, MainMenuSta
     return <div style={ this.props.externalStyles }>
       <List component='nav' style={styles.menu}>
         <Link to='/' style={styles.link}>
-          <ListItem button >
-            <img style={styles.logo} src='../../assets/Easygraph.png' alt='logo' width='104px' height='62px'/>
+          <ListItem button style={{ padding: 0 }} >
+            <Logo width='200px' height='125px' color='white'/>
+            {/* <img style={styles.logo} src='../../assets/Easygraph.png' alt='logo' width='104px' height='62px'/> */}
           </ListItem>
         </Link>
 

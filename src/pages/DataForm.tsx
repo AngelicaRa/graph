@@ -2,6 +2,8 @@ import * as React from 'react';
 import { TextField, Button, Typography, Grid } from '@material-ui/core';
 import { GraphStore } from '../stores/GraphStore';
 import { inject, observer } from 'mobx-react';
+import { Logo } from '../components/Logo';
+import { FileUpload } from '@material-ui/icons';
 
 const style: any = {
   input: {
@@ -52,12 +54,16 @@ export class DataForm extends React.Component<DataFormProps, DataFormState> {
 
   render() {
     return <Grid item sm={12}>
-      <form method='POST' autoComplete='off' >
-        <label>
-          <Typography variant='headline'>Introduce tus datos</Typography>
-          <input type='file' name='data' id='data' onChange={this.handleFile}/>
-        </label>
-        <input type='submit' value='Dibujar'/>
+      <Logo width='600px' height='350px'/>
+      <form method='POST' autoComplete='off' style={{ position: 'relative', top: '-40px'}} >
+        <Typography variant='headline' style={{ textAlign: 'center' }}>Introduce tus datos</Typography>
+        <Button variant='raised' component='label' style={{ marginLeft: '190px', marginTop: '20px', background: '#63c98C', color: 'white' }}>
+          <FileUpload />
+          <input onClick={this.handleFile} style={{ display: 'none' }} type='file' name='file' id='file' />
+        </Button>
+        <Button variant='raised' onClick={this.handleSubmit} type='submit' style={{ marginLeft: '30px', marginTop: '20px', background: '#63c98C' }}>
+          <Typography variant='subheading' style={{ color: 'white'}} >Guardar</Typography>
+        </Button>
       </form>
     </Grid>;
   }
