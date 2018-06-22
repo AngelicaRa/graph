@@ -20,6 +20,10 @@ export class BarGraph extends React.Component<BarGraphProps, BarGraphStates> {
   render() {
     console.log('Render: ', this.props.graphStore.graphs);
 
+    if (!this.props.graphStore.graphs) {
+      return <p>Version en desarrollo. Inicia sesión para continuar</p>;
+    }
+
     return <Grid item sm={12}>
         <Typography variant='headline' component='h1' align='center'>BARGRAPH PAGE</Typography>
         <BarChart width={600} height={300} data={this.props.graphStore.graphs[0].data} margin={{top: 50, right: 30, left: 20, bottom: 5}}>
