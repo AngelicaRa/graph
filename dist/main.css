@@ -8,13 +8,10 @@
 body {
   background: rgb(250, 250, 250);
 }
-/* 
+ 
 #app {
-  width: fit-content;
-  margin: auto;
-  background: var(--main-color);
-  color: var(--main-font-color);
-} */
+  margin-top: 40px;
+} 
 
 /* a { color: var(--main-font-color); }
 a:visited { color: var(--secondary-font-color); }
