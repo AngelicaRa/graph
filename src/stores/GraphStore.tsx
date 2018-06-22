@@ -13,7 +13,7 @@ export class GraphStore {
     //       resolve(jsonResponse);
     //     });
     // });
-    fetch('http://localhost:3000/graphs/' + localStorage.getItem('token'))
+    fetch('https://api.easygraph.me/graphs/' + localStorage.getItem('token'))
       .then(response => response.json())
       .then(jsonResponse => {
         this.graphs = jsonResponse;
@@ -22,13 +22,13 @@ export class GraphStore {
   }
 
   @action getFirstGraph() {
-    fetch('http://localhost:3000/graphs/' + localStorage.getItem('token'))
+    fetch('https://api.easygraph.me/graphs/' + localStorage.getItem('token'))
       .then(response => response.json())
       .then(jsonResponse => this.graphs = jsonResponse[0].data);
   }
 
   @action sendGraph() {
-    sa.post('http://localhost:3000/graphs')
+    sa.post('https://api.easygraph.me/graphs')
       .end(response => response.json());
   }
 }
