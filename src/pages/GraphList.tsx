@@ -35,18 +35,29 @@ export default class GraphList extends React.Component<GraphListProps, GraphList
     const { loginStore } = this.props;
     if (loginStore && loginStore.user && this.props.graphStore.graphs) {
       return <Grid item sm={12}>
-      <Typography variant='headline' component='h1' >Bienvenido {this.props.loginStore.user.userName ? this.props.loginStore.user.userName : ''}</Typography>
-      <Typography variant='subheading' component='h3'>lista de graficas</Typography>
-      <List component='nav'>
+      <Typography variant='display1' component='h1' style={{ textAlign: 'center', padding: '16px' }} >
+        Bienvenido {this.props.loginStore.user.userName ? this.props.loginStore.user.userName : ''}
+      </Typography>
+      <List style={{ width: '200px', margin: 'auto' }} >
+        <ListItem>
+          <ListItemText>
+            <Typography variant='title'>Tus Gráficas</Typography>
+          </ListItemText>
+        </ListItem>
         {this.props.graphStore.graphs.map(graph =>
           <ListItem button key={graph.name}>
             <ListItemText>{graph.name}</ListItemText>
           </ListItem>)}
+        {/* <ListItem button>
+          <Typography>
+            LOGOUT
+          </Typography>
+        </ListItem> */}
       </List>
-      <Button
-      variant='raised'
-      style={{ color: 'white', background: '#63c98C' }}
-      onClick={this.logout}>Logout</Button>
+      <br/>
+      <Button variant='raised' onClick={this.logout}
+        style={{ color: 'white', background: '#63c98C', margin: 'auto', width: '180px', display: 'block' }}
+        >Logout</Button>
     </Grid>;
     } else {
       return <p>Cargando...</p>;
