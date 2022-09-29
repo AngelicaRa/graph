@@ -30,7 +30,7 @@
     "react-dom": "^16.4.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "recharts": "^1.0.0-beta.10",
+    "recharts": "^2.1.14",
     "superagent": "^3.8.3"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
     "@types/recharts": "^1.0.21",
     "@types/superagent": "^3.8.0",
     "css-loader": "^0.28.11",
-    "d3-scale": "^2.0.0",
+    "d3-scale": "^4.0.2",
     "style-loader": "^0.21.0",
     "ts-loader": "^4.3.1",
     "tslint": "^5.10.0",
